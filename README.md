@@ -21,3 +21,5 @@ Do football clubs overpay for transfer and what drives it?
     GROUP BY to_club_name
     HAVING COUNT(*) > 5
     ORDER BY overpay_ratio DESC;
+<img width="877" height="361" alt="image" src="https://github.com/user-attachments/assets/8c8c2cd8-6533-4646-ae4a-c36c3703f0bd" />
+
