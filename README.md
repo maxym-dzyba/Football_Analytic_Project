@@ -9,7 +9,7 @@ Do football clubs overpay for transfer and what drives it?
 ## Analytic process
 
 ### Overpay ratio and total overpay by country
-The analysis is split in 3 different periods to consider the market value
+The analysis is split in 3 different periods to consider the market value. Transfers before 2009 not included due a small amount of transfers. Transfers in the future included
 
 Top 10 total overpay ratio:
    
