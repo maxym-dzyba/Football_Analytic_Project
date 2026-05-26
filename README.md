@@ -9,6 +9,10 @@ Do football clubs overpay for transfer and what drives it?
 ## Analytic process
 
 ### Overpay ratio and total overpay by country
+The analysis is split in 3 different periods to consider the market value
+
+Total overpay ratio:
+   
     SELECT
     to_club_name,
     ROUND(SUM(transfer_fee) / SUM(market_value_in_eur), 2) AS overpay_ratio,
