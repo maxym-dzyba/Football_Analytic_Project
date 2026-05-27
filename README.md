@@ -7,10 +7,10 @@ Dataset link: https://www.kaggle.com/datasets/davidcariboo/player-scores/data
 Do football clubs overpay for transfer and what drives it?
 
 ## Data
-Table transfers - info about transfers
-Table appearences - info about goals, assists, red/yellow cards, minutes played for every player
-Table players - info about all players (date of birth, age, position etc)
-Table clubs - info about clubs (average age, foreign numbers)
+- Table transfers - info about transfers
+- Table appearences - info about goals, assists, red/yellow cards, minutes played for every player
+- Table players - info about all players (date of birth, age, position etc)
+- Table clubs - info about clubs (average age, foreign numbers)
 
 ## Analytic process
 
