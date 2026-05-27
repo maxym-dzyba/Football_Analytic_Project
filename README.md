@@ -12,7 +12,7 @@ Do football clubs overpay for transfer and what drives it? (For last 5 years)
 - Table players - info about all players (date of birth, age, position etc)
 - Table clubs - info about clubs (average age, foreign numbers)
 
-## Analytic process
+## Overpay Analysis (2021–2030)
 
 ### Overpay ratio and total overpay by country
 Transfers in the future included. The percentage of overpay is the main, but also showed total overpay in EUR.
@@ -31,7 +31,11 @@ Transfers in the future included. The percentage of overpay is the main, but als
     HAVING COUNT(*) > 5
     ORDER BY overpay_ratio DESC;
     
-Top 10 overpay ration in period 2021 - 2030 (transfers in the future included)
+The chart shows which clubs consistently overpay relative to market value.
 <img width="934" height="363" alt="image" src="https://github.com/user-attachments/assets/92e4d501-b47e-4031-bde1-674f7547cef8" />
 
 Additional time-period analysis was performed
+
+Insights:
+- High ratio often comes from few transfers
+- Big clubs overpay more in total due to volume
