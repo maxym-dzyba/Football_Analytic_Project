@@ -15,7 +15,7 @@ Do football clubs overpay for transfer and what drives it? (For last 5 years)
 ## Overpay Analysis (2021–2030)
 
 ### Overpay ratio and total overpay by country
-Transfers in the future included. The percentage of overpay is the main, but also showed total overpay in EUR.
+The percentage of overpay is the main, but also showed total overpay in EUR.
 
     SELECT
     to_club_name,
