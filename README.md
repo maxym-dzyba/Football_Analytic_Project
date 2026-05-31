@@ -39,3 +39,31 @@ Additional time-period analysis was performed
 Insights:
 - High ratio often comes from few transfers
 - Big clubs overpay more in total due to volume
+
+### Player effeciency ratio
+Effeciency of each player includes sum of goals and assists divided on total minutes played for last 3 years before date of transfer. To make the analyze project easier later, the new table 'player_performance' was cerated
+```
+CREATE TABLE player_performance AS
+WITH players_from_2021 AS (
+    SELECT *
+    FROM transfers
+    WHERE transfer_date >= '2021-01-01' AND transfer_date <= '2026-05-30'
+      AND transfer_fee != ''
+      AND transfer_fee != 0
+      AND market_value_in_eur != ''
+      AND market_value_in_eur != 0
+),
+player_performance_2021 AS (
+    SELECT
+    t.player_id,
+    t.transfer_date,
+    SUM(a.goals + a.assists) AS ga,
+    SUM(a.minutes_played) AS minutes
+    FROM players_from_2021 t JOIN appearances a ON t.player_id = a.player_id
+    WHERE a.date < t.transfer_date
+    AND a.date >= date(t.transfer_date, '-1095 days')
+    GROUP BY t.player_id, t.transfer_date
+)
+SELECT *,
+	ROUND((ga * 90.0 / minutes), 2) AS effeciency
+FROM player_performance_2021
