@@ -57,6 +57,8 @@ player_performance_2021 AS (
     SELECT
     t.player_id,
     t.transfer_date,
+    t.market_value_in_eur,
+    t.transfer_fee,
     SUM(a.goals + a.assists) AS ga,
     SUM(a.minutes_played) AS minutes
     FROM players_from_2021 t JOIN appearances a ON t.player_id = a.player_id
