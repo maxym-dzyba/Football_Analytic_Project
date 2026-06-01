@@ -92,3 +92,19 @@ GROUP BY quartile
 The following screenshot shows average market price of each group (grouped by perfomance ratio) on the moment of transfer date
 
 <img width="375" height="176" alt="image" src="https://github.com/user-attachments/assets/cc264bd0-3b97-469d-9305-348772e04267" />
+### Overpay for transfers
+For every transfer calculate difference and percentage between expected_valued and transfer fee (*continuing of previous SQL query*)
+```
+players_with_avg_marker_val AS(
+SELECT
+q.player_id,
+q.transfer_date,
+q.transfer_fee,
+avm.avg_quartile AS expected_value
+FROM quartile_table q JOIN avg_market_val_per_quartile avm ON q.quartile = avm.quartile
+)
+SELECT *,
+	ROUND((transfer_fee - expected_value), 0) AS overpay,
+	ROUND(((transfer_fee - CAST(expected_value AS FLOAT)) / CAST(expected_value AS FLOAT)) * 100, 2) AS overpay_pct
+FROM players_with_avg_marker_val
+```
