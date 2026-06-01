@@ -69,3 +69,25 @@ player_performance_2021 AS (
 SELECT *,
 	ROUND((ga * 90.0 / minutes), 2) AS effeciency
 FROM player_performance_2021
+```
+### Average market_value of players
+Split all players in 4 category:
+1 - low perfomance players
+2 - below average perfomance players
+3 - above average perfomance players
+4 - top perfomance players
+```
+WITH quartile_table AS (
+	SELECT *,
+    NTILE(4) OVER (ORDER BY effeciency) AS quartile
+FROM player_performance
+WHERE minutes >= 450
+)
+SELECT
+quartile,
+ROUND((AVG(market_value_in_eur)),2) AS avg_quartile
+FROM quartile_table
+GROUP BY quartile
+```
+The following screenshot shows average market price of each group (grouped by perfomance ratio) on the moment of transfer date
+<img width="375" height="176" alt="image" src="https://github.com/user-attachments/assets/cc264bd0-3b97-469d-9305-348772e04267" />
