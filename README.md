@@ -94,6 +94,7 @@ The following screenshot shows average market price of each group (grouped by pe
 <img width="375" height="176" alt="image" src="https://github.com/user-attachments/assets/cc264bd0-3b97-469d-9305-348772e04267" />
 ### Overpay for transfers
 For every transfer calculate difference and percentage between expected_valued and transfer fee (*continuing of previous SQL query*)
+
 ```
 players_with_avg_marker_val AS(
 SELECT
