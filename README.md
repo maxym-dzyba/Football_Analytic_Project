@@ -72,10 +72,10 @@ FROM player_performance_2021
 ```
 ### Average market_value of players
 Split all players in 4 category:
-1 - low perfomance players
-2 - below average perfomance players
-3 - above average perfomance players
-4 - top perfomance players
+- 1 - low perfomance players
+- 2 - below average perfomance players
+- 3 - above average perfomance players
+- 4 - top perfomance players
 ```
 WITH quartile_table AS (
 	SELECT *,
