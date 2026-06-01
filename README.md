@@ -83,11 +83,13 @@ WITH quartile_table AS (
 FROM player_performance
 WHERE minutes >= 450
 )
+avg_market_val_per_quartile AS (
 SELECT
 quartile,
 ROUND((AVG(market_value_in_eur)),2) AS avg_quartile
 FROM quartile_table
 GROUP BY quartile
+),
 ```
 The following screenshot shows average market price of each group (grouped by perfomance ratio) on the moment of transfer date
 
