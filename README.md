@@ -4,7 +4,7 @@ SQL analysis of football transfer dataset (successful transfers)
 Dataset link: https://www.kaggle.com/datasets/davidcariboo/player-scores/data
 
 ## Main question:
-Do football clubs overpay for transfer and what drives it? (For last 5 years)
+Do clubs overpay for high-performing players efficiently, or waste money on low-performing ones? (For last 5 years)
 
 ## Data
 - Table transfers - info about transfers
