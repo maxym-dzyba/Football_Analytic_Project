@@ -96,7 +96,7 @@ The following screenshot shows average market price of each group (grouped by pe
 <img width="375" height="176" alt="image" src="https://github.com/user-attachments/assets/cc264bd0-3b97-469d-9305-348772e04267" />
 
 ### Overpay for transfers
-For every transfer calculate difference and percentage between expected_valued and transfer fee (*continuing of previous SQL query*)
+For every transfer calculate difference and percentage between expected value and transfer fee (*continuing of previous SQL query*)
 
 ```
 players_with_avg_marker_val AS(
@@ -112,3 +112,32 @@ SELECT *,
 	ROUND(((transfer_fee - CAST(expected_value AS FLOAT)) / CAST(expected_value AS FLOAT)) * 100, 2) AS overpay_pct
 FROM players_with_avg_marker_val
 ```
+
+### Total club overpay
+*continuing of previous SQL query*
+
+```
+SELECT
+	ot.player_id,
+	ot.transfer_date,
+	t.to_club_name,
+	ot.transfer_fee,
+	ot.expected_value,
+	ot.overpay,
+	ot.overpay_pct
+FROM overpay_table ot JOIN transfers t ON ot.player_id = t.player_id AND ot.transfer_date = t.transfer_date
+)
+SELECT
+	to_club_name,
+	ROUND((AVG(overpay_pct)), 2) AS club_overpay_ratio
+FROM club_join_table 
+GROUP BY to_club_name
+ORDER BY club_overpay_ratio DESC
+```
+
+On following screenshot showed total club overpay for last 5 years, starts from 01.01.2021 includes compare of effeciency of player
+
+<img width="540" height="525" alt="image" src="https://github.com/user-attachments/assets/e96783c4-8f00-497b-a35e-b0ca062048c9" />
+
+Insights:
+- Almost all big and succsesfull clubs overpay for effective players. Less popular clubs usually buy players for market value or lower of it.
