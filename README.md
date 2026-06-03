@@ -141,3 +141,34 @@ On following screenshot showed total club overpay for last 5 years, starts from 
 
 Insights:
 - Almost all big and succsesfull clubs overpay for effective players. Less popular clubs usually buy players for market value or lower of it.
+
+### Clubs ROI
+
+To calculate ROI of clubs, we split all overpays in 3 category: good overpay, bad overpays and neutral
+*continuing of previous SQL query*
+
+```
+club_join AS(
+SELECT ot.*,
+t.to_club_name,
+CASE 
+	WHEN (quartile IN(4,3)) AND overpay > 0 THEN 'good overpay'
+	WHEN (quartile IN(1,2)) AND overpay > 0 THEN 'bad overpay'
+	ELSE 'neutral'
+END AS overpay_quality
+FROM overpay_table ot JOIN transfers t ON ot.player_id = t.player_id AND ot.transfer_date = t.transfer_date
+)
+SELECT
+    to_club_name,
+    SUM(CASE WHEN overpay_quality = 'good overpay' THEN overpay ELSE 0 END) AS smart_overpay,
+    SUM(CASE WHEN overpay_quality = 'bad overpay' THEN overpay ELSE 0 END) AS waste_overpay,
+    SUM(overpay) AS total_overpay,
+    ROUND(
+        SUM(CASE WHEN overpay_quality = 'good overpay' THEN overpay ELSE 0 END)
+        -
+        ABS(SUM(CASE WHEN overpay_quality = 'bad overpay' THEN overpay ELSE 0 END))
+    , 0) AS roi_score
+FROM club_join
+GROUP BY to_club_name
+ORDER BY roi_score DESC;
+```
