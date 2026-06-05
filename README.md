@@ -172,4 +172,6 @@ ORDER BY waste_overpay  DESC
 <img width="1169" height="527" alt="image" src="https://github.com/user-attachments/assets/73be799d-4e69-48da-b2a0-6da10bb0b7d7" />
 
 Insights:
-- The biggest clubs have the biggest overpays for players
+- The biggest clubs have the biggest smart overpay, which give them quality players. But at the same time they have the biggest wasted overpay
+- Transfer overpay is not the proof of inefficiency or effeciency of players
+- Only 72 from 641 (11% of clubs) overpay for players. Other clubs make budget-smart transfers.
