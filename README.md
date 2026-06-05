@@ -146,6 +146,16 @@ Insights:
 
 *continuing of previous SQL query*
 ```
+club_join AS(
+SELECT ot.*,
+t.to_club_name,
+CASE 
+	WHEN (quartile IN(4,3)) AND overpay > 0 THEN 'good overpay'
+	WHEN (quartile IN(1,2)) AND overpay > 0 THEN 'bad overpay'
+	ELSE 'neutral'
+END AS overpay_quality
+FROM overpay_table ot JOIN transfers t ON ot.player_id = t.player_id AND ot.transfer_date = t.transfer_date
+)
 SELECT
     to_club_name,
     SUM(CASE WHEN overpay_quality = 'good overpay' THEN overpay ELSE 0 END) AS smart_overpay,
@@ -156,7 +166,7 @@ SUM(CASE WHEN overpay_quality = 'bad overpay' THEN overpay ELSE 0 END)) * 1.0 / 
 SUM(overpay) AS total_overpay
 FROM club_join
 GROUP BY to_club_name
-ORDER BY efficiency_score DESC
+ORDER BY waste_overpay  DESC
 ```
 
 <img width="1169" height="527" alt="image" src="https://github.com/user-attachments/assets/73be799d-4e69-48da-b2a0-6da10bb0b7d7" />
