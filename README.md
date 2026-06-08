@@ -142,6 +142,30 @@ On following screenshot showed total club overpay for last 5 years, starts from 
 Insights:
 - Almost all big and succsesfull clubs overpay for effective players. Less popular clubs usually buy players for market value or lower of it.
 
+### Top most expensive overpays per coutnry
+
+*continuing of previous SQL query*
+```
+SELECT *
+FROM (
+    SELECT
+        to_club_name,
+        player_id,
+        transfer_date,
+        transfer_fee,
+        overpay,
+        ROW_NUMBER() OVER(PARTITION BY to_club_name ORDER BY overpay DESC) AS rn
+    FROM club_join
+) t
+WHERE rn <= 3
+ORDER BY to_club_name, overpay DESC
+)
+```
+
+Insights:
+- Most clubs top 1 most overpaid transfers take the largest part of total overpay.
+- There are clubs, that overpay for players which are in above average perfomance players or top perfomance players groups. This is working strategy
+
 ### Transfer Investment Efficiency Index
 
 *continuing of previous SQL query*
