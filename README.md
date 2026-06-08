@@ -9,8 +9,6 @@ Do clubs overpay for high-performing players efficiently, or waste money on low-
 ## Data
 - Table transfers - info about transfers
 - Table appearences - info about goals, assists, red/yellow cards, minutes played for every player
-- Table players - info about all players (date of birth, age, position etc)
-- Table clubs - info about clubs (average age, foreign numbers)
 
 ## Overpay Analysis (2021–2026)
 
@@ -39,9 +37,10 @@ Additional time-period analysis was performed
 Insights:
 - High ratio often comes from few transfers
 - Big clubs overpay more in total due to volume
+- Market value is used as a proxy for expected player value, which may not fully capture contextual factors such as injuries, potential, or tactical fit
 
-### Player effeciency ratio
-Effeciency of each player includes sum of goals and assists divided on total minutes played for last 3 years before date of transfer. To make the analyze project easier later, the new table 'player_performance' was cerated
+### Player efficiency ratio
+Efficiency of each player includes sum of goals and assists divided on total minutes played for last 3 years before date of transfer. To make the analyze project easier later, the new table 'player_performance' was cerated
 ```
 CREATE TABLE player_performance AS
 WITH players_from_2021 AS (
@@ -72,10 +71,10 @@ FROM player_performance_2021
 ```
 ### Average market_value of players
 Split all players in 4 category:
-- 1 - low perfomance players
-- 2 - below average perfomance players
-- 3 - above average perfomance players
-- 4 - top perfomance players
+- 1 - low perfomence players
+- 2 - below average perfomence players
+- 3 - above average perfomence players
+- 4 - top perfomence players
 ```
 WITH quartile_table AS (
 	SELECT *,
@@ -91,7 +90,7 @@ FROM quartile_table
 GROUP BY quartile
 ),
 ```
-The following screenshot shows average market price of each group (grouped by perfomance ratio) on the moment of transfer date
+The following screenshot shows average market price of each group (grouped by perfomence ratio) on the moment of transfer date
 
 <img width="375" height="176" alt="image" src="https://github.com/user-attachments/assets/cc264bd0-3b97-469d-9305-348772e04267" />
 
@@ -135,7 +134,7 @@ GROUP BY to_club_name
 ORDER BY club_overpay_ratio DESC
 ```
 
-On following screenshot showed total club overpay for last 5 years, starts from 01.01.2021 includes compare of effeciency of player
+On following screenshot showed total club overpay for last 5 years, starts from 01.01.2021 includes compare of efficiency of player
 
 <img width="540" height="525" alt="image" src="https://github.com/user-attachments/assets/e96783c4-8f00-497b-a35e-b0ca062048c9" />
 
@@ -164,7 +163,7 @@ ORDER BY to_club_name, overpay DESC
 
 Insights:
 - Most clubs top 1 most overpaid transfers take the largest part of total overpay.
-- There are clubs, that overpay for players which are in above average perfomance players or top perfomance players groups. This is working strategy
+- There are clubs, that overpay for players which are in above average perfomence players or top perfomence players groups. This is working strategy
 
 ### Transfer Investment Efficiency Index
 
@@ -197,5 +196,16 @@ ORDER BY waste_overpay  DESC
 
 Insights:
 - The biggest clubs have the biggest smart overpay, which give them quality players. But at the same time they have the biggest wasted overpay
-- Transfer overpay is not the proof of inefficiency or effeciency of players
-- Only 72 from 641 (11% of clubs) overpay for players. Other clubs make budget-smart transfers.
+- Transfer overpay is not the proof of inefficiency or efficiency of players
+- Most clubs do not systematically overpay
+
+## Conclusions
+- Clubs do not fail because of average decisions - they fail because of a few expensive mistakes that has a big impact of total overpay of club
+- Market value often doesn't show the real price for transfer
+- Larger clubs show higher total overpayment mostly due to higher transfer volume and higher spending capacity, not necessarily worse decision quality
+- Market value doesn't show a real price for player
+
+## Reccomendations
+- Focus on reducing downside risk in high-cost transfers, rather than avoiding low-performing player categories entirely
+- Clubs should optimize scouting for value gap (performance vs price), especially in mid-tier markets
+- Squad efficiency is better improved through balanced portfolio building rather than targeting only top-performing players
