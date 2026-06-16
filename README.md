@@ -145,6 +145,9 @@ On following screenshot showed total club overpay for last 5 years, starts from 
 
 <img width="540" height="525" alt="image" src="https://github.com/user-attachments/assets/e96783c4-8f00-497b-a35e-b0ca062048c9" />
 
+<img width="949" height="665" alt="image" src="https://github.com/user-attachments/assets/ca322911-40a6-4862-b8f9-705fac1697dc" />
+
+
 Insights:
 - Almost all big and succsesfull clubs overpay for effective players. Less popular clubs usually buy players for market value or lower of it.
 
