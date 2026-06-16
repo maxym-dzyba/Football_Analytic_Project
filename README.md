@@ -72,7 +72,11 @@ FROM player_performance_2021
 
 <img width="1339" height="689" alt="image" src="https://github.com/user-attachments/assets/de127a50-0a2d-4669-8b26-fc110169fa71" />
 
-### Average market_value of players
+Insights:
+- The most efficient players are underpaid
+- Clubs overpay even for non-efficient players
+
+### Average market value of players
 Split all players in 4 category:
 - 1 - low perfomence players
 - 2 - below average perfomence players
