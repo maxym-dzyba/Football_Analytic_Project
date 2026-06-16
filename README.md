@@ -199,7 +199,7 @@ SUM(CASE WHEN overpay_quality = 'bad overpay' THEN overpay ELSE 0 END)) * 1.0 / 
 SUM(overpay) AS total_overpay
 FROM club_join
 GROUP BY to_club_name
-ORDER BY waste_overpay  DESC
+ORDER BY effecience_Score  DESC
 ```
 
 <img width="1169" height="527" alt="image" src="https://github.com/user-attachments/assets/73be799d-4e69-48da-b2a0-6da10bb0b7d7" />
